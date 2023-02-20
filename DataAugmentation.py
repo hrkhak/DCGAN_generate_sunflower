@@ -1,5 +1,6 @@
 
 IMAGE_SIZE = 256
+NUM_NEW_IMAGES = 1000
 
 def random_rotation(image_array: ndarray):
     # pick a random degree of rotation between 20% on the left and 20% on the right
