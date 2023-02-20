@@ -61,3 +61,28 @@ def generator_loss(fake_output):
 
 generator_optimizer = tf.keras.optimizers.Adam(learning_rate=LR_D, beta_1=BETA1)
 discriminator_optimizer = tf.keras.optimizers.Adam(learning_rate=LR_G, beta_1=BETA1)
+
+
+train(train_dataset, EPOCHS)
+
+checkpoint.save(file_prefix = checkpoint_prefix)
+# upload the files (checkpoint, ckpt-xxx.index, ckpt-xxx.data-*) into training_checkpoints folder
+RESTORE_CHECKPOINT = True
+if RESTORE_CHECKPOINT:
+    checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+    
+noise = tf.random.normal([2, NOISE_SIZE])
+generated_image = generator(noise, training=False)
+show_samples2(generated_image)
+
+
+noise = tf.random.normal([5, NOISE_SIZE])
+generated_image = generator(noise, training=False)
+show_samples2(generated_image)
+
+
+
+
+
+
+
