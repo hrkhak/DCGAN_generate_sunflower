@@ -27,6 +27,8 @@ import time
 import tarfile
 tz_NY = pytz.timezone('America/New_York') 
 ##########################################################################3
+EPOCHS = 10
+
 
 ### LOSS AND OPTIMIZER
 # This method returns a helper function to compute cross entropy loss
