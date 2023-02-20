@@ -1,3 +1,6 @@
+
+IMAGE_SIZE = 256
+
 def random_rotation(image_array: ndarray):
     # pick a random degree of rotation between 20% on the left and 20% on the right
     random_degree = random.uniform(-20, 20)
