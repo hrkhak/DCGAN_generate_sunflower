@@ -1,3 +1,5 @@
+NOISE_SIZE = 100
+
 def make_generator_model():
     model = tf.keras.Sequential()
     model.add(layers.Dense(16*16*1024, use_bias=False, input_shape=(NOISE_SIZE,)))
