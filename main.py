@@ -22,21 +22,11 @@ import numpy as np
 import PIL
 from PIL import Image
 import pytz
-tz_NY = pytz.timezone('America/New_York') 
 import random
 import time
-
-
-
-
-
-
-
-
-
-
-
-
+import tarfile
+tz_NY = pytz.timezone('America/New_York') 
+##########################################################################3
 
 ### LOSS AND OPTIMIZER
 # This method returns a helper function to compute cross entropy loss
