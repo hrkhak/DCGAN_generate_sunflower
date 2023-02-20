@@ -1,3 +1,5 @@
+IMAGE_SIZE = 256
+
 input_images = np.asarray([np.asarray(
     Image.open(file)
     .resize((IMAGE_SIZE, IMAGE_SIZE))
