@@ -1,4 +1,4 @@
-#Save checkpoints
+#دخیره checkpoints
 
 checkpoint_dir = './training_checkpoints'
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt")
@@ -6,19 +6,19 @@ checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
                                  discriminator_optimizer=discriminator_optimizer,
                                  generator=generator,
                                  discriminator=discriminator)
-#Noise sample array
+#ارایه نویز
 
 noise_dim = NOISE_SIZE
 num_examples_to_generate = 16
 
-# We will reuse this seed overtime (so it's easier)
-# to visualize progress in the animated GIF)
-seed = tf.random.normal([num_examples_to_generate, noise_dim])
-#The training loop begins with generator receiving a random seed as input. That seed is used to produce an image. The discriminator is then used to classify real images (drawn from the training set) and fakes images (produced by the generator). The loss is calculated for each of these models, and the gradients are used to update the generator and discriminator.
 
-# Notice the use of `tf.function`
-# This annotation causes the function to be "compiled".
-@tf.function
+seed = tf.random.normal([num_examples_to_generate, noise_dim])
+#حلقه آموزش با دریافت یک ورودی تصادفی به ژنراتور آغاز می شود.
+#سپس از جداکننده برای طبقه بندی تصاویر واقعی (برگرفته از مجموعه آموزشی) و تصاویر جعلی (تولید شده توسط ژنراتور) استفاده می شود
+#ضرر برای این مدل ها محاسبه می شود و از گرادیان برای بروزرسانی جنراتور و جداساز استفاده می شود
+
+
+@tf.function  #به این دلیل که کامپایل شود
 def train_step(images):
     noise = tf.random.normal([BATCH_SIZE, noise_dim])
 
@@ -51,11 +51,8 @@ def train(dataset, epochs):
       d_losses.append(d_loss)
       g_losses.append(g_loss)
 
-    # Produce images for the GIF as we go
     display.clear_output(wait=True)
     
-
-    # Save the model every 100 epochs
     if (epoch + 1) % 100 == 0:
       checkpoint.save(file_prefix = checkpoint_prefix)
       save_image = True
@@ -68,7 +65,7 @@ def train(dataset, epochs):
     save_image = False
     print ('Time for epoch {} is {} sec'.format(epoch + 1, time.time()-start))
 
-  # Generate after the final epoch
+  # جنریت کردن بعد از اخرین تکرار
   display.clear_output(wait=True)
   generate_and_save_images(generator,
                            epochs,
