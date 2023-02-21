@@ -3,8 +3,8 @@ IMAGE_SIZE = 256
 NUM_NEW_IMAGES = 1000
 
 def random_rotation(image_array: ndarray):
-    # pick a random degree of rotation between 20% on the left and 20% on the right
-    random_degree = random.uniform(-20, 20)
+    # چرخش ۱۵ درصدی به سمت چپ و راست بصورت تصادفی
+    random_degree = random.uniform(-15, 15)
     return sk.transform.rotate(image_array, random_degree)
 
 def horizontal_flip(image_array: ndarray):
@@ -18,18 +18,17 @@ def vertical_and_horizontal_flip(image_array: ndarray):
     h_flip_image = vertical_flip(image_array)
     return horizontal_flip(h_flip_image)
 
-def TF_crop_pad(x, n_pixels=20, pad_mode='edge'):
-    """Pad image by n_pixels on each size, then take random crop of same
-    original size.
+def TF_crop_pad(x, n_pixels=15, pad_mode='edge'):
+    """اضافه کردن پد به اندازه ۱۵ پیکسل و به صورت تصادفی برش تصویر به همین اندازه
     """
     assert len(x.shape) == 3
     h, w, nc = x.shape
 
-    # First pad image by n_pixels on each side
+    # اولین پیدینگ تصویر
     padded = sk.util.pad(x, [(n_pixels, n_pixels) for _ in range(2)] + [(0,0)],
         mode=pad_mode)
 
-    # Then take a random crop of the original size
+    # کراپ تصویر اصلی
     crops = [(c, 2*n_pixels-c) for c in np.random.randint(0, 2*n_pixels+1, [2])]
     # For channel dimension don't do any cropping
     crops += [(0,0)]
