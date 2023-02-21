@@ -1,3 +1,15 @@
+
+#import modules
+import sys
+sys.path.insert(0,'./Desktop/DCGAN_generate_sunflower/')
+
+from DCGAN_generate_sunflower import DataAugmentation
+from DCGAN_generate_sunflower import DataPreparation
+from DCGAN_generate_sunflower import Discriminator
+from DCGAN_generate_sunflower import Generator
+from DCGAN_generate_sunflower import Traning
+
+
 #import librarys and requirements
 ##############################################################
 import tensorflow as tf
@@ -10,7 +22,7 @@ from skimage import io
 from skimage import util
 from skimage import transform
 
-%matplotlib inline
+#%matplotlib inline
 
 from datetime import datetime
 import os
@@ -26,25 +38,28 @@ import random
 import time
 import tarfile
 tz_NY = pytz.timezone('America/New_York') 
-##########################################################################3
+##########################################################################
+
+
+BATCH_SIZE = 128 
+LR_D = 0.0002 
+LR_G = 0.0002 
+
+BETA1 = 0.9 
+EPSILON = 0.001 
+LEAK_RELU_APLPHA = 0.2 
+
+KERNEL_INITIALIZER='glorot_uniform'
+
+######################################################################################################
+#CALL GENERATOR
+
 IMAGE_SIZE = 256
 EPOCHS = 10
 NOISE_SIZE = 100
 NUM_NEW_IMAGES = 1000
-DATASET_FOLDER = 'only_flowers/'
 
-BATCH_SIZE = 128 # Paper
-LR_D = 0.0002 # Paper
-LR_G = 0.0002 # Paper
 
-BETA1 = 0.9 # Default
-EPSILON = 0.001 # Default
-LEAK_RELU_APLPHA = 0.2 # Paper
-
-KERNEL_INITIALIZER='glorot_uniform' # Default
-
-######################################################################################################
-#CALL GENERATOR
 generator = make_generator_model()
 
 # به کار بردن جنراتور برای ایجاد یک تصویر
@@ -64,18 +79,15 @@ decision = discriminator(generated_image)
 print (decision)
 
 #######################################################################################################
-
+DATASET_FOLDER = './flower_photos'
 
 GET_DATASET = True
-data_dir = '/content/flower_photos'
-#DATASET_FOLDER = 'content/flower_photos/'
+data_dir = './content/'
 if GET_DATASET:
-    print('Fechting the Image Data Set')
+    print('Download and fechting DataSet')
     !wget http://download.tensorflow.org/example_images/flower_photos.tgz
-    print('Unzipping the file')
     ZIP_FILE = '/content/flower_photos.tgz'
     tarfile.open(ZIP_FILE, 'r:gz').extractall(data_dir)
-    print('Daisies images are available')
 num_of_images = len(os.listdir(DATASET_FOLDER))
 
 #######################################################################################################
@@ -177,10 +189,4 @@ show_samples2(generated_image)
 noise = tf.random.normal([5, NOISE_SIZE])
 generated_image = generator(noise, training=False)
 show_samples2(generated_image)
-
-
-
-
-
-
 
