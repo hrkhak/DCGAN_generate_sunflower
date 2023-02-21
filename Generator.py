@@ -1,4 +1,3 @@
-NOISE_SIZE = 100
 
 def make_generator_model():
     model = tf.keras.Sequential()
@@ -32,10 +31,3 @@ def make_generator_model():
     assert model.output_shape == (None, 256, 256, 3)
 
     return model
-
-generator = make_generator_model()
-generated_image2 = generated_image[0].numpy() * 127.5 + 127.5
-# Use the (as yet untrained) generator to create an image.
-noise = tf.random.normal([1, NOISE_SIZE])
-generated_image = generator(noise, training=False)
-
