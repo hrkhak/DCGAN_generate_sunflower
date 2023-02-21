@@ -47,7 +47,7 @@ KERNEL_INITIALIZER='glorot_uniform' # Default
 #CALL GENERATOR
 generator = make_generator_model()
 
-# Use the (as yet untrained) generator to create an image.
+# به کار بردن جنراتور برای ایجاد یک تصویر
 noise = tf.random.normal([1, NOISE_SIZE])
 generated_image = generator(noise, training=False)
 
@@ -58,8 +58,8 @@ generated_image2 = generated_image[0].numpy() * 127.5 + 127.5
 #CALL DISCRIMINATOR
 
 discriminator = make_discriminator_model()
-#Use the (as yet untrained) discriminator to classify the generated images as real or fake. 
-#The model will be trained to output positive values for real images, and negative values for fake images.
+#استفاده از جداساز برای کلاس بندی تصاویر فیک و اصلی 
+#خروجی مثبت مدل برای تصاویر اصلی است و یرای تصاویر تقلبی خروجی منفی است
 decision = discriminator(generated_image)
 print (decision)
 
@@ -76,11 +76,10 @@ if GET_DATASET:
     ZIP_FILE = '/content/flower_photos.tgz'
     tarfile.open(ZIP_FILE, 'r:gz').extractall(data_dir)
     print('Daisies images are available')
-#Check if there are some files in the folder
 num_of_images = len(os.listdir(DATASET_FOLDER))
 
 #######################################################################################################
-# dictionary of the transformations we defined earlier
+# ایجاد دیکشنری از تبدیلات تعریف شده
 available_transformations = {
     'rotate': random_rotation,
     'vertical_flip': vertical_flip,
@@ -91,29 +90,28 @@ available_transformations = {
 
 folder_path = DATASET_FOLDER
 
-# find all files paths from the folder
+# یافتن مسیر تمامی فایل ها
 images = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
 
 num_generated_files = 0
 while num_generated_files <= NUM_NEW_IMAGES:
-    # random image from the folder
     image_path = random.choice(images)
-    # read image as an two dimensional array of pixels
+    # خواندن تصاویر به عنوان ارایه دو بعدی از تصاویر
     image_to_transform = sk.io.imread(image_path)
-    # random num of transformation to apply
+    # اعمال تصادفی تعدادی از تبدیلات
     num_transformations_to_apply = random.randint(1, len(available_transformations))
 
     num_transformations = 0
     transformed_image = None
     while num_transformations <= num_transformations_to_apply:
-        # random transformation to apply for a single image
+        # اعمال تصادفی تبدیلات به یک تصویر
         key = random.choice(list(available_transformations))
         transformed_image = available_transformations[key](image_to_transform)
         num_transformations += 1
 
         new_file_path = '%s/augmented_image_%s.jpg' % (folder_path, num_generated_files)
 
-        # write image to the disk
+        # ذخیره تصاویر
         #io.imsave(new_file_path, transformed_image.astype(np.uint8))
         io.imsave(new_file_path, transformed_image)
         num_generated_files += 1
@@ -132,7 +130,6 @@ train_images = input_images.reshape(input_images.shape[0], 256, 256, 3).astype('
 train_images = (train_images - 127.5) / 127.5 
 
 BUFFER_SIZE = input_images.shape[0]
-# Batch and shuffle the data
 train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
 
 sample_images = input_images[:5]
@@ -143,12 +140,11 @@ show_samples(sample_images)
 
 #######################################################################################################
 ### LOSS AND OPTIMIZER
-# This method returns a helper function to compute cross entropy loss
+# محاسبه cross entropy loss
 cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
 
 #Discriminator loss
-#This method quantifies how well the discriminator is able to distinguish real images from fakes. It compares the discriminator's predictions on real images to an array of 1s, and the discriminator's predictions on fake (generated) images to an array of 0s.
-
+#این روش مشخص می‌کند که تمایزکننده چقدر می‌تواند تصاویر واقعی را از تقلبی تشخیص دهد. پیش‌بینی‌های تشخیص‌دهنده روی تصاویر واقعی را با آرایه‌ای از 1s و پیش‌بینی‌های تشخیص‌دهنده در تصاویر جعلی (تولید شده) را با آرایه‌ای از 0 مقایسه می‌کند.
 def discriminator_loss(real_output, fake_output):
     real_loss = cross_entropy(tf.ones_like(real_output), real_output)
     fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
@@ -157,11 +153,10 @@ def discriminator_loss(real_output, fake_output):
   
   
 #Generator loss
-#The generator's loss quantifies how well it was able to trick the discriminator. Intuitively, if the generator is performing well, the discriminator will classify the fake images as real (or 1). Here, we will compare the discriminators decisions on the generated images to an array of 1s.
-
+#این روش مشخص می‌کند که جداکننده چقدر می‌تواند تصاویر واقعی را از فیک تشخیص دهد
 def generator_loss(fake_output):
     return cross_entropy(tf.ones_like(fake_output), fake_output)
-#The discriminator and the generator optimizers are different since we will train two networks separately.
+#لازم به ذکر است که بهینه ساز جنراتور و جداساز متفاوت است به دلیل اینکه این دو دو شبکه متفاوت هستند
 
 generator_optimizer = tf.keras.optimizers.Adam(learning_rate=LR_D, beta_1=BETA1)
 discriminator_optimizer = tf.keras.optimizers.Adam(learning_rate=LR_G, beta_1=BETA1)
@@ -170,7 +165,6 @@ discriminator_optimizer = tf.keras.optimizers.Adam(learning_rate=LR_G, beta_1=BE
 train(train_dataset, EPOCHS)
 
 checkpoint.save(file_prefix = checkpoint_prefix)
-# upload the files (checkpoint, ckpt-xxx.index, ckpt-xxx.data-*) into training_checkpoints folder
 RESTORE_CHECKPOINT = True
 if RESTORE_CHECKPOINT:
     checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
