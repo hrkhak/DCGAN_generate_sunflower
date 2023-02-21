@@ -8,7 +8,7 @@ def random_rotation(image_array: ndarray):
     return sk.transform.rotate(image_array, random_degree)
 
 def horizontal_flip(image_array: ndarray):
-    # horizontal flip doesn't need skimage, it's easy as flipping the image array of pixels !
+    # وارونه سازی افقی تصویر از طریق جابجایی افقی ارایه تصویر
     return image_array[:, ::-1]
 
 def vertical_flip(image_array: ndarray):
@@ -30,6 +30,6 @@ def TF_crop_pad(x, n_pixels=15, pad_mode='edge'):
 
     # کراپ تصویر اصلی
     crops = [(c, 2*n_pixels-c) for c in np.random.randint(0, 2*n_pixels+1, [2])]
-    # For channel dimension don't do any cropping
+    # برای کانال اندازه نباید کراپی صورت بگیرد
     crops += [(0,0)]
     return sk.transform.resize(sk.util.crop(padded, crops, copy=True), (IMAGE_SIZE, IMAGE_SIZE)) 
