@@ -44,3 +44,6 @@ layers = 3 * Conv2d
  
  ![1](https://user-images.githubusercontent.com/30187615/220960508-1fe96834-6bbe-40a1-812a-306734541ee2.PNG)
 
+
+
+*داده افزایی*
