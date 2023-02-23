@@ -33,3 +33,14 @@ padding = same
 ![5](https://user-images.githubusercontent.com/30187615/220959021-75d26bce-a650-4f70-ad51-d2463db82244.PNG)
 
 layers = 3 * Conv2d
+
+
+
+دیتاست از ادرس 
+ http://download.tensorflow.org/example_images/flower_photos.tgz
+ گرفته شده است
+ که شامل پوشه گل های رز و افتاب گردان و ... می باشد.
+ 
+ 
+ ![1](https://user-images.githubusercontent.com/30187615/220960508-1fe96834-6bbe-40a1-812a-306734541ee2.PNG)
+
