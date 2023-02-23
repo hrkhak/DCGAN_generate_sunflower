@@ -72,7 +72,7 @@ available_transformations = {
     
 }
  
-* نمونه داده افزایی بر روی یک تصویر*
+* نمونه داده افزایی بر روی یک تصویر
  
  
  
@@ -80,3 +80,6 @@ available_transformations = {
 ![random rotation](https://user-images.githubusercontent.com/30187615/221011716-390eab92-24c0-4ec1-a18a-d5c88b4063c5.PNG)
 ![vertical flip](https://user-images.githubusercontent.com/30187615/221011733-f3f64afd-7445-454f-93cf-324120caf772.PNG)
 ![vertical and horizental flip](https://user-images.githubusercontent.com/30187615/221011750-dbb03c7c-1558-4521-976d-dd9227862fa8.PNG)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
