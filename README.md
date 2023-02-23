@@ -56,7 +56,7 @@ layers = 3 * Conv2d
 به جهت داده افزایی اقداماتی نظیر چرخش تصادفی - وارونه نمایی عمودی و افقی و برش صورت پذیرفته است.
 
 
-
+}
 
 available_transformations = {
 
@@ -70,4 +70,5 @@ available_transformations = {
     
     'TF_crop_pad': TF_crop_pad
     
+}
 }
