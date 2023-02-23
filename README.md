@@ -9,8 +9,11 @@ implementation of dcgan to generate flower
 
  ساختار جنراتور به شکل زیر است:
  
+ 
  noise arraye size = 100
+ 
  initial shape = (16,16,1024)
+ 
  layers = 4 * conv2D transpose
  
  
