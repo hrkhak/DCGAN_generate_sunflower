@@ -58,9 +58,15 @@ layers = 3 * Conv2d
 
 
 available_transformations = {
+
     'rotate': random_rotation,
+    
     'vertical_flip': vertical_flip,
+    
     'horizontal_flip': horizontal_flip,
+    
     'vertical_and_horizontal_flip': vertical_and_horizontal_flip,
+    
     'TF_crop_pad': TF_crop_pad
+    
 }
