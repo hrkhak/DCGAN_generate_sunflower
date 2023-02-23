@@ -47,3 +47,4 @@ layers = 3 * Conv2d
 
 
 *داده افزایی*
+*Data Augmetation*
