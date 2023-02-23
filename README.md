@@ -57,6 +57,7 @@ layers = 3 * Conv2d
 
 
 
+
 available_transformations = {
 
     'rotate': random_rotation,
