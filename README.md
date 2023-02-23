@@ -7,4 +7,6 @@ implementation of dcgan to generate flower
 
 2- Discriminator
 
+لایه های جنرانتور به شکل زیر هستند:
 
+![4](https://user-images.githubusercontent.com/30187615/220945082-806a941b-afe4-43cb-9595-90ff688ebc5d.PNG)
