@@ -50,5 +50,17 @@ layers = 3 * Conv2d
 ---------------------------------------------------------------------------------------------
 
 *داده افزایی*
-*Data Augmetation*
+*Data Augmentation*
 
+
+به جهت داده افزایی اقداماتی نظیر چرخش تصادفی - وارونه نمایی عمودی و افقی و برش صورت پذیرفته است.
+
+
+
+available_transformations = {
+    'rotate': random_rotation,
+    'vertical_flip': vertical_flip,
+    'horizontal_flip': horizontal_flip,
+    'vertical_and_horizontal_flip': vertical_and_horizontal_flip,
+    'TF_crop_pad': TF_crop_pad
+}
