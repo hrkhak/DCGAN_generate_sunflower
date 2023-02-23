@@ -7,6 +7,10 @@ implementation of dcgan to generate flower
 
 2- Discriminator
 
+در توصیف این دو از api keras استفاده شده است:
+
+ model = tf.keras.Sequential()
+ 
  ساختار جنراتور به شکل زیر است:
  
  
