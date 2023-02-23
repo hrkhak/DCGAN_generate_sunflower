@@ -9,4 +9,4 @@ implementation of dcgan to generate flower
 
  ساختار جنرانتور به شکل زیر هستند:
 
-![4](https://user-images.githubusercontent.com/30187615/220945082-806a941b-afe4-43cb-9595-90ff688ebc5d.PNG)
+![4](https://user-images.githubusercontent.com/30187615/220946300-cd558d36-9520-4c5a-b2c3-e3e58493a42d.PNG)
