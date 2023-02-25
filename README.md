@@ -126,10 +126,12 @@ available_transformations = {
 * EOPCH = 350 
 
 
-![(https://user-images.githubusercontent.com/30187615/221378710-ea946617-de94-4b36-b8c3-00d3e3d1bbdb.PNG)
+![350](https://user-images.githubusercontent.com/30187615/221378791-54e75f76-3ab7-4790-ae69-968772f6063d.PNG)
+
 
 
 
 * EPOCH = 460
 
-![Uploading 460.PNG…]()
+
+![460](https://user-images.githubusercontent.com/30187615/221378797-973aaac9-4cc1-49fa-b373-0123858f42df.PNG)
