@@ -90,3 +90,45 @@ available_transformations = {
 
 خروجی  تصاویر تولید شده به نسبت تعداد epoch انجام شده را در تصاویر پایین می توانید ببینید.
 
+
+خروجی های اولیه که تنها ورودی نویز است را مشاهده می کنید
+
+*EPOCH = 1
+
+![1](https://user-images.githubusercontent.com/30187615/221378657-6208ceb7-b0a0-43f2-a41e-7fc07e366745.PNG)
+
+
+*EPOCH = 15
+
+![15](https://user-images.githubusercontent.com/30187615/221378666-75da66a4-c4fb-42da-b484-48c68407dbf3.PNG)
+
+
+* EPOCH = 90
+![90](https://user-images.githubusercontent.com/30187615/221378673-a39515b7-f084-43a9-95e8-4f6ba7387132.PNG)
+
+
+*EPOCH = 150
+
+
+![120](https://user-images.githubusercontent.com/30187615/221378686-34f94a5d-2b83-4830-827e-4272d3c66d5c.PNG)
+
+
+*EOPCH = 200
+
+![200](https://user-images.githubusercontent.com/30187615/221378692-1fc48197-f3dc-4e21-8f5c-38822032aeaf.PNG)
+
+
+* EPOCH = 300
+![300](https://user-images.githubusercontent.com/30187615/221378704-06b14dc5-dbf8-477e-a934-be2d61de4866.PNG)
+
+
+* EOPCH = 350 
+
+
+![300](https://user-images.githubusercontent.com/30187615/221378710-ea946617-de94-4b36-b8c3-00d3e3d1bbdb.PNG)
+
+
+
+* EPOCH = 460
+
+![Uploading 460.PNG…]()
