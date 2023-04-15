@@ -156,7 +156,7 @@ show_samples(sample_images)
 cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
 
 #Discriminator loss
-#این روش مشخص می‌کند که تمایزکننده چقدر می‌تواند تصاویر واقعی را از تقلبی تشخیص دهد. پیش‌بینی‌های تشخیص‌دهنده روی تصاویر واقعی را با آرایه‌ای از 1s و پیش‌بینی‌های تشخیص‌دهنده در تصاویر جعلی (تولید شده) را با آرایه‌ای از 0 مقایسه می‌کند.
+#این روش مشخص می‌کند که تمایزکننده چقدر می‌تواند تصاویر واقعی را از تقلبی تشخیص دهد. پیش‌بینی‌های تشخیص‌دهنده روی تصاویر واقعی را با آرایه‌ای از 1 و پیش‌بینی‌های تشخیص‌دهنده در تصاویر جعلی (تولید شده) را با آرایه‌ای از 0 مقایسه می‌کند.
 def discriminator_loss(real_output, fake_output):
     real_loss = cross_entropy(tf.ones_like(real_output), real_output)
     fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
