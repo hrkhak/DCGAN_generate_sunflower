@@ -1,0 +1,10 @@
+python 3.7 to up
+tensorflow v2
+scipy 10.9
+skimage  Version 0.19.3 2022-06-12
+matplotlib 3.6.0
+glob 3.10.9
+IPython
+numpy 1.23.8
+PIL
+tarfile
