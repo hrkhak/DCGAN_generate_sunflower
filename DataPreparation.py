@@ -1,4 +1,4 @@
-def show_samples(sample_images):
+def show_samples(sample_images):            # نمایش داده های دیتاست
     
     print("len(sample_images): ", len(sample_images))
     print("len(sample_images): ", sample_images[0].shape)
@@ -15,6 +15,9 @@ def show_samples(sample_images):
         
     plt.show()
     plt.close()
+    
+    
+    
 def show_image_custom(input_image):
     fig = plt.figure(figsize=(4,4))
 
@@ -23,6 +26,9 @@ def show_image_custom(input_image):
     plt.axis('off')
 
     plt.show()
+    
+    
+    # نمایش تصاویر در هر تکرار
 def summarize_epoch(epoch, d_losses, g_losses, save_image=True):
   
     fig, ax = plt.subplots()
@@ -35,6 +41,8 @@ def summarize_epoch(epoch, d_losses, g_losses, save_image=True):
     plt.show()
     plt.close()
     
+    
+    #تولید و ذخیره سازی تصاویر
 def generate_and_save_images(model, epoch, test_input, save_image=True):
   predictions = model(test_input, training=False)
 
