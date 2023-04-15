@@ -150,9 +150,14 @@ available_transformations = {
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *how to run
 
-1 - frist install python 3.7 to up
+1. frist install python 3.7 to up
+
 2. install requirements
-3. run main file
+
+
+4. run main file
+
+
 
 note : attention to address of dataset
 
