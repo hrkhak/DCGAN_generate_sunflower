@@ -1,9 +1,11 @@
 
 def make_generator_model():
+    #مدل بصورت جمله ای می باشد
     model = tf.keras.Sequential()
+    #اضافه کردن لایه ها
     model.add(layers.Dense(16*16*1024, use_bias=False, input_shape=(NOISE_SIZE,)))
     model.add(layers.BatchNormalization(epsilon=EPSILON))
-    model.add(layers.ReLU())
+    model.add(layers.ReLU())   
 
     model.add(layers.Reshape((16, 16, 1024)))
     assert model.output_shape == (None, 16, 16, 1024) # Note: None is the batch size
